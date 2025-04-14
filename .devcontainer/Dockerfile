@@ -42,5 +42,17 @@ RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/shar
 RUN apt-get install -y ansible \
     && ansible-galaxy collection install azure.azcollection
 
+
+# Install GitHub CLI
+RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && apt-get update \
+    && apt-get install -y gh \
+    && gh --version
+
+# Configure GitHub CLI for Codespaces authentication
+RUN echo "eval $(gh auth setup-git)" >> /etc/bash.bashrc \
+    && echo "if [ -n \"$CODESPACES\" ]; then gh auth login --with-token < ~/.codespaces/secrets/GITHUB_TOKEN; fi" >> /etc/bash.bashrc
+
 # User Scope
 USER ${USERNAME}
