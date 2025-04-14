@@ -3,8 +3,12 @@
   "build":{
     "dockerfile": "Dockerfile"
   },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "overrideCommand": true,
 
+  
   // Configure tool-specific properties.
   "customizations": {
     "codespaces": {
