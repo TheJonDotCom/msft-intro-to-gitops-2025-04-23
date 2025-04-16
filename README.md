@@ -1,5 +1,7 @@
 # msft-intro-to-gitops
 
+Instructions on how to clone this repo and launch CodeSpaces. 
+
 Introduction to GitOps with Github.
 
 1. Intro to GitOps
