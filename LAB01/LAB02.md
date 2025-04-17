@@ -31,8 +31,7 @@ After completing these steps, visit your GitHub repository to verify the updated
 
 1. The default README isn't very useful so let's add some content that helps people understand what our repo\project does. Typically your REPO would include some key information, such as Description, Features, How to contribute, Getting Started, License Inforation, etc etc. 
 
-    > [!NOTE]
-    >
+    > **NOTE**  
     > Using Github Co-Pilot to help write README is a great time saving feature.. We'll talk more about Github Co-Pilot later. 
 
     Copy/Paste the following into your README.md. 
@@ -80,7 +79,7 @@ After completing these steps, visit your GitHub repository to verify the updated
 
     In VSCODE workspaces under ```lab-api```, click README.md to open in Editor. Then ```paste``` the content from the above code block. It should look like this when done.
     
-    > [!IMPORTANT]
+    > **NOTE**  
     > _Don't forget to save the changes by hitting ```ctrl``` + ```s```._
 
     ![alt text](imgs/lab01-203.jpg)
@@ -166,8 +165,9 @@ After completing these steps, visit your GitHub repository to verify the updated
     5. Looks like we have a formatting issue.. Our Project Structure doesn't look like it should.. So we need to go back and fix this before we are done with this branch. To fix this we need to add ```code block``` around that section in the README. 
     ![alt text](imgs/lab01-213.jpg)
 
-> [!NOTE]
->
+<br>
+
+> **NOTE**  
 > See if you can figure out how to fix and push the changes. If you get stuck or want some help the next lab walks you through fixing the error and pushing the changes. 
 
 ---

@@ -2,6 +2,7 @@
 
 This lab is designed to introduce you to Docker by validating its installation, running your first container, and exploring basic Docker commands. You'll start by confirming that Docker is installed and operational, then proceed to pull and run the hello-world container to understand how Docker images and containers work. You'll also learn how to list images, check container statuses, and interact with running containers. Additionally, you'll practice stopping and removing containers, as well as cleaning up unused Docker images to manage system resources effectively. By the end of this lab, you'll have a solid foundation in using Docker for containerized application development.
 
+
 ## Validate Docker Install ##
 
 Before we dive into building our dockerApp, we should validate that docker is installed and working. 

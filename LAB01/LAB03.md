@@ -13,7 +13,7 @@ Verify the changes by running git status. The output should indicate that your w
 1. Let's open our READMEmd file once again and scroll down to ```line 14``` and add ``` before and after our Project Structure. *(See below)*
     ![d](imgs/lab01-214.jpg)
 
-    >[!IMPORTANT]
+    >**NOTE**  
     > These are three backticks (or grave accent) and not single qoutes/apostre's. 
 
 ---
@@ -95,7 +95,7 @@ Finally, navigate back to the main branch page to verify the changes. The update
 2. In the 'Open a pull request' section, update Title and Description to match below. Then hit the "Create pull request" button indicated by the arrow. 
     ![alt text](imgs/lab01-302.jpg)
 
-    > [!NOTE]
+    > **NOTE**  
     > Take a few moments to explore this page before proceeding. 
 
 ---
@@ -146,7 +146,7 @@ This process ensures your local environment is clean and up to date with the rem
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ 
     ```
 
-> [!NOTE]
+> **NOTE**  
 > Make sure you are in the correct branch when doing ```git pull```. If you are not in ```main``` then you need to swich using ```git   checkout main```.
 
 ---

@@ -40,7 +40,7 @@ In this step, you create a Dockerfile to define the instructions for building a 
     ```sh
     touch Dockerfile
     ```
-    >[!NOTE]
+    >**NOTE**  
     > The name of the Dockerfile is case-sensative. ```docker build``` expects that the name to be ```Dockerfile``` not ```dockerfile```. 
 ---
 2. Copy following content into your ```Dockerfile``` and save the file. 
