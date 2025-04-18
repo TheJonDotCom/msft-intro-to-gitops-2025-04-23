@@ -3,6 +3,9 @@
 What You Are Doing:<br>
 Create custom container image running NodeJS and WebApplication that will be used in later lab. 
 
+### Architecture ###
+![alt text](../Files/lab_architecture.jpg)
+
 ---
 ## Lab Guides ##
 
