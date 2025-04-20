@@ -1,0 +1,14 @@
+{
+    "name": "demo-api",
+    "version": "1.0.0",
+    "description": "A simple Node.js webAPI for docker demo in JSON format.",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "author": "BenTheBuilder",
+    "license": "MIT"
+}

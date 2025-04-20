@@ -1,7 +1,13 @@
+
+
+
 # LAB01: Introduction to Git #
 
 What You Are Doing:<br>
 In these labs, you will create a new repository on GitHub for your Lab API project directly from your terminal using the GitHub CLI (gh), demonstrating the efficiency of GitOps workflows. You will learn how to manage branches, update and format a README.md file, and push changes to a remote repository. Additionally, you will practice creating pull requests, merging changes, and cleaning up your local environment. By the end of these labs, you will have a solid understanding of foundational GitOps practices, including repository management, collaboration, and workflow optimization.
+
+### Architecture ###
+![alt text](../Files/lab_architecture.jpg)
 
 ---
 ## Lab Guides ##

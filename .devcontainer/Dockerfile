@@ -40,8 +40,7 @@ RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/shar
 
 # Install Ansible
 RUN apt-get install -y ansible \
-    && ansible-galaxy collection install azure.azcollection
-
+    && ansible-galaxy collection install azure.azcollection 
 
 # Install GitHub CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg \

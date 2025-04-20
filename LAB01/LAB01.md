@@ -2,10 +2,16 @@
 
 ## Create and Clone Directory ##
 
+In this step, you will set up your GitHub authentication and create a new repository for your project. First, update your GITHUB_TOKEN environment variable with the value stored in your CodeSpaces Secrets by running the provided command in the terminal. This allows you to authenticate with GitHub beyond the current project or repository. To make the token persist across terminal sessions, add it to your .bashrc file. Next, use the gh repo create command to create a new repository named lab-api. The --public flag makes the repository public, and the --add-readme flag ensures the repository includes a default README.md file. After creating the repository, retrieve its URL using the gh repo view command with the --json and --jq options to extract the URL. Finally, clone the repository to your local development environment using the git clone command, navigate into the cloned directory with cd, and add it to your Visual Studio Code workspace using the code -a command. This setup prepares your workspace for further development.
+
 1. First we need to update our GITHUB_TOKEN with the version stored in our CodeSpaces Secrets. You do this by running the following command in the Terminal. This will allow us to authenticate to GitHub beyond our current project/repo that you just cloned ```msft-intro-to-gitops```. 
 
     ```sh
+    # Set GITHUB_TOKEN from our CodeSpace Variable
     GITHUB_TOKEN=$CONFIG_GITHUB_TOKEN
+
+    # Lets make this survive restarts by adding to our .bashrc file. 
+    echo 'GITHUB_TOKEN=$CONFIG_GITHUB_TOKEN' >> ~/.bashrc
     ```
 ---
 2. Use the gh repo create command to create a new repository named lab-api:
@@ -25,7 +31,7 @@
     gh repo view lab-api --json url --jq '.url'
     ```
     ```sh
-    # OUTPUT:
+    # TERMINAL OUTPUT:
     # It will however have your GitHub Account information. 
     # Copy the web address provided by your output, you'll need that for the next step
     @BenTheBuilder-MSFTLabs ➜ /workspaces $ gh repo view lab-api --json url --jq '.url'
@@ -51,7 +57,7 @@
     git clone https://github.com/BenTheBuilder-MSFTLabs/lab-api
     ```
     ```sh
-    # OUTPUT:
+    # TERMINAL OUTPUT:
     @BenTheBuilder-MSFTLabs ➜ /workspaces $ git clone https://github.com/BenTheBuilder-MSFTLabs/lab-api
     Cloning into 'lab-api'...
     warning: You appear to have cloned an empty repository.
@@ -63,7 +69,7 @@
     cd lab-api
     ```
     ```sh
-    # OUTPUT:
+    # TERMINAL OUTPUT:
     # Notice the prompt changed to indicate you are in the (main) branch of the lab-api repo. 
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $  
     ```
