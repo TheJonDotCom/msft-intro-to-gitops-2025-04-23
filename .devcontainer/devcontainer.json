@@ -30,7 +30,9 @@
           "github.copilot-chat",
           "github.vscode-github-actions",
           "github.vscode-pull-request-github",
-          "redhat.ansible"
+          "redhat.ansible",
+	  "bierner.markdown-preview-github-styles",
+	  "bierner.github-markdown-preview"
       ]
     }
   },
