@@ -1,0 +1,77 @@
+# Extract vm_private_ips
+VMS_IP=$(terraform output -json vm_private_ips | jq -r '.[]')
+
+
+# Extract Output to Variables
+VMS_ID=$(terraform -chdir=/workspaces/lab-api/infra/terraform output -json vm_resourceId | jq -r '.[]')
+BASTIONNAME=$(terraform -chdir=/workspaces/lab-api/infra/terraform output -json BastionName | jq -r '.')
+RESGROUP=$(terraform -chdir=/workspaces/lab-api/infra/terraform output -json ResourceGroupName | jq -r '.')
+
+
+# Extract vm_resourceId
+VMS_ID=$(terraform -chdir=infra/terraform output -json vm_resourceId | jq -r '.[]')
+
+# Create Bastion Tunnels for each VM
+PORT=10022
+for vm_resource_id in $VMS_ID; do
+  az network bastion tunnel \
+    --name $BASTIONNAME \
+    --resource-group $RESGROUP \
+    --target-resource-id "$vm_resource_id" \
+    --resource-port "22" \
+    --port "$PORT" &
+  echo "Tunnel created for $vm_resource_id on port $PORT"
+  PORT=$((PORT + 10000)) # Increment port for the next VM
+done
+
+## terraform different directory
+terraform -chdir=infra/terraform output
+
+## Validate Connections
+jobs
+
+## Kill Jobs
+kill %<jobid> 
+
+## SSH
+ssh -i ~/.ssh/docker -p 10022 labAdmin@127.0.0.1
+
+## ghcr login - requires both be run with SUDO on Ubuntu Azure VM
+echo $GITHUB_TOKEN | docker login ghcr.io -u BenTheBuilder-MSFTLabs --password-stdin
+docker pull ghcr.io/benthebuilder-msftlabs/demo-api:latest
+
+
+- name: Pull Docker image
+      docker_image:
+        name: ghcr.io/{{ lookup('env', 'GITHUB_USER') }}/{{ lookup('env', 'IMAGE_NAME') }}
+        tag: latest
+        source: pull
+      register: docker_image
+
+## inventory.yml
+---
+webservers:
+  hosts:
+    webserver1:
+      ansible_host: 127.0.0.1
+      ansible_port: 10022
+      ansible_user: labAdmin
+      ansible_key_file: ~/.ssh/docker
+    webserver2:
+      ansible_host: 127.0.0.1
+      ansible_port: 20022
+      ansible_user: labAdmin
+      ansible_key_file: ~/.ssh/docker
+
+
+## Run Ansible Playbook
+ansible-playbook infra/ansible/main.yml -i infra/ansible/inventory.yml 
+
+## Install community.docker collection 
+ansible-galaxy collection install community.docker
+
+
+
+
+In a aragraph write what is this doing and what purpose does it server.. Summary this part, it should be instructional and technical. 
+
