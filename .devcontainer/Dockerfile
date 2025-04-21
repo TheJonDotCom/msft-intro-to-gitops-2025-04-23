@@ -28,7 +28,10 @@ RUN pwsh -c "Install-Module -Name Az -Force" \
     && pwsh -c "Install-Module -Name powershell-yaml -Force"
 
 # Install Azure Tools
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash 
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash \
+    && az config set extension.dynamic_install_allow_preview=true \
+    && az extension add --name bastion
+
 
 # Install Terraform & Packer
 RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg \
