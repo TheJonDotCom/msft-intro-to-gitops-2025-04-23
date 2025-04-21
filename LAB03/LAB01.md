@@ -90,6 +90,71 @@ This step in the lab ensures that the necessary tools are installed and configur
     Terraform v1.11.4
     on linux_amd64
     ```
+---
+
+5. Create Ansible SSH Key that will be passed to the Virtual Machines for Ansible to authenticate with. As per best practices, each solution and environment should have their own keys defined to avoid accidental depoloyments to the wrong environment (ie Production)..
+
+Create ```.ssh``` Directory for our keys: 
+```sh
+mkdir ~/.ssh
+```
+
+cd to ```.ssh``` directory and run keygen:
+```sh
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible -C "ansible-key"
+```
+```sh
+# TERMINAL OUTPUT
+@BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api/infra/terraform (main) $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible -C "ansible-key"
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/vscode/.ssh/ansible
+Your public key has been saved in /home/vscode/.ssh/ansible.pub
+The key fingerprint is:
+SHA256:b3WrZA0Tq4YrqZy6LgDy07hfihD47MzXiX7RM7au/3U ansible-key
+The key's randomart image is:
++---[RSA 4096]----+
+|                 |
+|                 |
+|            .    |
+|+            o   |
+|=. o   .S   = .  |
+|.++ . . =o o = . |
+|o oo o.=.+= + E  |
+|.=.oo+* .+ + o   |
+| oO*Bo.=+.. .    |
++----[SHA256]-----+
+```
+>**NOTE**
+> When prompted for passphrase simply press enter and leave them blank.
+
+Now configure the require permsissions on the ```.ssh``` directory 
+```sh
+chmod 700 ~/.ssh
+```
+
+Set Permissons on private key:
+```sh
+chmod 600 ~/.ssh/ansible
+```
+
+Set permissions on public key file
+```sh
+chmod 644 ~/.ssh/ansible.pub
+```
+
+Finally verify the permissions are correct:
+```sh
+ls -ld ~/.ssh ~/.ssh/ansible ~/.ssh/ansible.pub
+```
+```sh
+# TERMINAL OUTPUT:
+@BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api/infra/terraform (main) $ ls -ld ~/.ssh ~/.ssh/ansible ~/.ssh/ansible.pub
+drwx------ 2 vscode vscode 4096 Apr 21 17:20 /home/vscode/.ssh
+-rw------- 1 vscode vscode 3381 Apr 21 17:20 /home/vscode/.ssh/ansible
+-rw-r--r-- 1 vscode vscode  737 Apr 21 17:20 /home/vscode/.ssh/ansible.pub
+```
 
 
 ### Setup Directory Structure for Infra Code ###
