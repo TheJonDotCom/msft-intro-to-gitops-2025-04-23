@@ -139,14 +139,18 @@ This step in the lab focuses on setting up the directory structure for infrastru
 
 ---
 3. Create infra directory for terraform and ansible. 
-    ```sh
-    # Make root Infra Folder
+   Make root Infra Folder
+   ```sh
     mkdir infra
-
-    # Create Terraform Folder
+    ```
+    
+    Create Terraform Folder
+    ```sh
     mkdir infra/terraform
-
-    # Create Ansible Folder
+    ```
+    
+    Create Ansible Folder
+    ```sh
     mkdir infra/ansible
     ```
     ```sh
