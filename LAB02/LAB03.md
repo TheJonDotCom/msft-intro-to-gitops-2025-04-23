@@ -169,7 +169,7 @@ To https://github.com/BenTheBuilder-MSFTLabs/lab-api
 Now lets add this image to our EnvVars/.bashrc so we can use it in later labs: 
 
 ```sh
-echo "DOCKER_IMAGE='ghcr.io/benthebuilder-msftlabs/demo-api'" >> ~/.bashrc
+echo "export DOCKER_IMAGE='ghcr.io/benthebuilder-msftlabs/demo-api'" >> ~/.bashrc
 ```
 
 
