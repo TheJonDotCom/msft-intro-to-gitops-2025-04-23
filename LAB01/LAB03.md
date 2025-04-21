@@ -92,7 +92,17 @@ Finally, navigate back to the main branch page to verify the changes. The update
 
 ---
 
-2. In the 'Open a pull request' section, update Title and Description to match below. Then hit the "Create pull request" button indicated by the arrow. 
+2. In the 'Open a pull request' section, update Title and Description to match below. Then hit the "Create pull request" button indicated by the arrow.
+
+    Add Title:
+    ```sh
+    Update README.md
+    ```
+    Add a Description:
+    ```sh
+    Updated default README.md with project related information.
+    ```
+    
     ![alt text](imgs/lab01-302.jpg)
 
     > **NOTE**  
