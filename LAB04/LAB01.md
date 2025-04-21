@@ -109,12 +109,12 @@ webservers:
       ansible_host: 127.0.0.1
       ansible_port: 10022
       ansible_user: labAdmin
-      ansible_key_file: ~/.ssh/docker
+      ansible_key_file: ~/.ssh/ansible
     webserver2:
       ansible_host: 127.0.0.1
       ansible_port: 20022
       ansible_user: labAdmin
-      ansible_key_file: ~/.ssh/docker
+      ansible_key_file: ~/.ssh/ansible
 ```
 
 #### Set Host Key Checking to False ####
