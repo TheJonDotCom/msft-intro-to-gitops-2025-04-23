@@ -239,7 +239,7 @@ appServersConfig = {
     vmcount         = 2
     adminUsername   = "labAdmin"
     zones           = ["3"]
-    key_path        = "/home/vscode/.ssh/docker.pub"
+    key_path        = "/home/vscode/.ssh/ansible.pub"
     vm_sku          = "Standard_D2s_v6"
 }
 ```
