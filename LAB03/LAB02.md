@@ -13,7 +13,7 @@ This step in the lab focuses on setting up the foundational files for Terraform 
 
 2. Create Terraform file: 
     ```sh
-    touch data.tf locals.tf main.tf outputs.tf provider.tf variables.tf
+    touch data.tf locals.tf main.tf outputs.tf provider.tf variables.tf lab.tfvars
     ```
 
     The Current Repo Layout should look like this: 
