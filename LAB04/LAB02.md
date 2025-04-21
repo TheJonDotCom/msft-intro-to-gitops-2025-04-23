@@ -1,8 +1,6 @@
 # Lab Guide #
 
-This lab guides users through 
-
-write a short paragraph that summarizes what this step in the lab is performing
+Lab 02 walks the user through creating a custom Ansible role to automate the deployment of a web API server using Docker. The lab begins by setting up a proper role directory structure, separating tasks and variables into their respective files for modularity and reuse. The role itself performs a series of system configuration steps—updating packages, installing Docker, configuring user permissions, installing dependencies, logging into the GitHub Container Registry, pulling a container image, and launching it as a running service. Variables are securely injected using environment lookups, and the playbook demonstrates idempotency by ensuring repeated runs don’t introduce unintended changes. By the end of this lab, the learner sees how Ansible roles can simplify complex provisioning workflows and be reused as composable infrastructure code in a GitOps pipeline.
 
 ## Custom App Role  ##
 
