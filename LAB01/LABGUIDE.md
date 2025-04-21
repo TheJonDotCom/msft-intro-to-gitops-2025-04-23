@@ -36,4 +36,4 @@ In LAB03, you will learn how to finalize and merge changes from a feature branch
 
 ---
 
-[RETURN README ➡](../../README.md)
+[RETURN README ➡](../README.md)
