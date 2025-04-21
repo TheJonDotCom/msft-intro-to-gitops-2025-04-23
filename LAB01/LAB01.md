@@ -95,15 +95,16 @@ In this step, you will set up your GitHub authentication and create a new reposi
     ![Open-Preview](./imgs/lab01-04.jpg)
 
 
-    After cloning the repo down, ```cd lab-api``` navigates into the newly created lab-api directory, which contains the cloned repository.
+    After cloning the repo down, ```cd /workspaces/lab-api``` navigates into the newly created lab-api directory, which contains the cloned repository.
 
     ```sh
-    cd lab-api
+    cd /workspaces/lab-api
     ```
     ```sh
     # TERMINAL OUTPUT:
     # Notice the prompt changed to indicate you are in the (main) branch of the lab-api repo. 
-    @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $  
+    @BenTheBuilder-MSFTLabs ➜ /workspaces/msft-intro-to-gitops (main) $ cd /workspaces/lab-api/
+    @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ 
     ```
 
 
