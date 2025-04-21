@@ -33,7 +33,10 @@
           "redhat.ansible",
 	  "bierner.markdown-preview-github-styles",
 	  "bierner.github-markdown-preview"
-      ]
+      ],
+      "settings": {
+        "markdown.preview.openPreviewToSide": true
+      }
     }
   },
 
