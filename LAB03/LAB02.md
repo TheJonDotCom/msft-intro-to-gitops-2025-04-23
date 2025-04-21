@@ -151,8 +151,8 @@ data "azurerm_client_config" "current" {
 }
 
 # Import Existing Resource Group created using the Azure CLI
-data "azurerm_resource_group" "existing" {
-    name = "rg-${initials}${var.random_string}" 
+data "azurerm_resource_group" "rg" {
+    name = "rg-${var.initials}${var.random_string}" 
 }
 ```
 ---
