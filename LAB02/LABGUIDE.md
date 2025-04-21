@@ -32,3 +32,5 @@ In LAB03, you will test the custom Docker image by running it as a container loc
 [BEGIN LAB03 ➡](LAB03.md)
 
 ---
+
+[RETURN TO README ➡](../README.md)
