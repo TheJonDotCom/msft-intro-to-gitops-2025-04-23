@@ -25,15 +25,13 @@ In this step, you will set up your GitHub authentication and create a new reposi
     >>- ```--clone```**(OPTIONAL)**: tells GitHub CLI to clone the repository to your local environment immediately after creating it. 
     >>- ```--add-readme```: Tells GitHub CLI to make sure the new repo includes a default README.md document in the main branch. *_Every Repo should have a default README.md_*.
 ---
-3. Now lets collect the Repo URL so we can use git to clone it down to our local system: _(the previous step's output would have included the URL. But it is good to know how to retrieve it should you need too.)_
+3. Now lets collect the Repo URL to a Variable so we can use git to clone it down to our local system: _(the previous step's output would have included the URL. But it is good to know how to retrieve it should you need too and add it to Variable for ease of access.)_
 
     ```sh
-    gh repo view lab-api --json url --jq '.url'
+    GH_REPO_URL=$(gh repo view lab-api --json url --jq '.url')
     ```
     ```sh
     # TERMINAL OUTPUT:
-    # It will however have your GitHub Account information. 
-    # Copy the web address provided by your output, you'll need that for the next step
     @BenTheBuilder-MSFTLabs ➜ /workspaces $ gh repo view lab-api --json url --jq '.url'
     https://github.com/BenTheBuilder-MSFTLabs/lab-api
     ```
@@ -43,6 +41,23 @@ In this step, you will set up your GitHub authentication and create a new reposi
     >>- ```--json```: This option specifies that you want to get the repository's data in JSON format.
     >>- ```url```: This tells GitHub CLI that you only want to retrieve the URL of the repository in the JSON output.
     >>- ```---jq '.url'```: This flag is used to filter the JSON output using a JQ expression. jq is a lightweight and flexible command-line JSON processor that allows you to extract and manipulate JSON data easily. It tells jq to extract the value of the url key from the JSON response.
+
+    Let's add this Variable to our .bashrc so it is autocreated/populated if our workspace restarts/timesout. 
+    ```sh
+    echo "GH_REPO_URL=$GH_REPO_URL" >> ~/.bashrc
+    ```
+
+    Verify that our .bashrc is updated successfully
+    ```sh
+    tail -n 2 ~/.bashrc
+    ```
+    ```sh
+    # TERMINAL OUTPUT:
+    @BenTheBuilder-MSFTLabs ➜ /workspaces/msft-intro-to-gitops (main) $ tail -n 2 ~/.bashrc
+    GITHUB_TOKEN=$CONFIG_GITHUB_TOKEN
+    GH_REPO_URL=https://github.com/BenTheBuilder-MSFTLabs/lab-api
+    @BenTheBuilder-MSFTLabs ➜ /workspaces/msft-intro-to-gitops (main) $
+    ```
 ---
 4. Clone the repository you created on GitHub to your local development environment and add it to your Visual Studio Code workspace.
 
@@ -54,13 +69,16 @@ In this step, you will set up your GitHub authentication and create a new reposi
     The ```git clone``` command uses Git to clone the repository from the specified URL to your local machine. Cloning creates a local copy of the repository, including all its files and history. 
 
     ```repo
-    git clone https://github.com/BenTheBuilder-MSFTLabs/lab-api
+    git clone $GH_REPO_URL
     ```
     ```sh
     # TERMINAL OUTPUT:
-    @BenTheBuilder-MSFTLabs ➜ /workspaces $ git clone https://github.com/BenTheBuilder-MSFTLabs/lab-api
+    @BenTheBuilder-MSFTLabs ➜ /workspaces $ git clone $GH_REPO_URL
     Cloning into 'lab-api'...
-    warning: You appear to have cloned an empty repository.
+    remote: Enumerating objects: 3, done.
+    remote: Counting objects: 100% (3/3), done.
+    remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+    Receiving objects: 100% (3/3), done.
     ```
 
     After cloning the repo down, ```cd lab-api``` navigates into the newly created lab-api directory, which contains the cloned repository.
@@ -74,11 +92,14 @@ In this step, you will set up your GitHub authentication and create a new reposi
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $  
     ```
 
-    This command opens the current directory ($PWD, which stands for "Present Working Directory") in Visual Studio Code and adds it to the existing workspace. The -a flag ensures that the directory is added to the current workspace instead of replacing it.
+    This command opens the current directory ($PWD, which stands for "Present Working Directory") in Visual Studio Code and adds it to the existing workspace. The -a flag ensures that the directory is added to the current workspace instead of replacing it. 
 
     ```sh
     code -a $PWD
     ```
+
+    >**NOTE**  
+    > This will cause your workspace browser window to refresh. This is expected and okay, just continue. 
 
     Your workspace in VSCode should now contain two working directories. ```msft-intro-to-gitops``` and ```lab-api```, the latter of which is currently empty.
 
