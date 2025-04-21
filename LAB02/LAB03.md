@@ -10,7 +10,7 @@ This step focuses on testing the custom Docker image locally by running it as a 
     ```sh
     docker images
     ```
-    ```sh
+    ```
     # TERMINAL OUTPUT
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker images
     REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
@@ -21,7 +21,7 @@ This step focuses on testing the custom Docker image locally by running it as a 
     ```sh
     docker run -d -p 8080:80 --name demo-webapi demo-api
     ```
-    ```sh
+    ```
     # TERMINAL OUTPUT:
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker run -d -p 8080:80 --name demo-webapi demo-api
     100dfa99032bb5ca1782a3080d5d05645e55e2b55f6b9f06b16c99ca8a1bf0ff
@@ -60,7 +60,7 @@ This step focuses on testing the custom Docker image locally by running it as a 
         ```sh
         docker rm demo-webapi 
         ```
-        ```sh
+        ```
         # TERMINAL OUTPUT:  
         @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker rm demo-webapi 
         demo-webapi
@@ -74,11 +74,12 @@ The next step involves pushing the custom Docker image to the GitHub Container R
 1. Tag the Image: The docker tag command assigns a new name to the existing image, including the registry URL (ghcr.io/<ghusername>/demo-api:latest). This step ensures the image is correctly identified for the target registry. Now we need to use ```docker tag``` to tag the image with the correct repository name and latest tag. 
     ```sh
     docker tag demo-api:latest ghcr.io/benthebuilder-msftlabs/demo-api:latest
-
-    ## We can verify the version is created
+    ```
+    We can verify the version is created
+    ```sh
     docker images
     ```
-    ```sh
+    ```
     # TERMINAL OUTPUT:
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker tag demo-api:latest ghcr.io/benthebuilder-msftlabs/demo-api:latest
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker images
@@ -106,7 +107,7 @@ The next step involves pushing the custom Docker image to the GitHub Container R
     ```sh
     docker push ghcr.io/benthebuilder-msftlabs/demo-api:latest
     ```
-    ```sh
+    ```
     # TERMINAL OUTPUT:
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker push ghcr.io/benthebuilder-msftlabs/demo-api:latest
     The push refers to repository [ghcr.io/benthebuilder-msftlabs/demo-api]
@@ -129,17 +130,21 @@ The next step involves pushing the custom Docker image to the GitHub Container R
 ### Push changes to repo ###
 
 You know what to do.. ```git add```, ```git commit```, and then ```git push```. 
+Add all files to staging
 ```sh
-# Add all files to staging
 git add .
+```
 
-# Commit staged files to repository
+Commit staged files to repository
+```sh
 git commit -m 'push LAB2 work'
+```
 
-# Push to Github
+Push to Github
+```sh
 git push
 ```
-```sh
+```
 # TERMINAL OUTPUT
 @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ git add .
 
