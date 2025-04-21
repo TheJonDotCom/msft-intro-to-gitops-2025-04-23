@@ -81,6 +81,20 @@ In this step, you will set up your GitHub authentication and create a new reposi
     Receiving objects: 100% (3/3), done.
     ```
 
+        This command opens the current directory ($PWD, which stands for "Present Working Directory") in Visual Studio Code and adds it to the existing workspace. The -a flag ensures that the directory is added to the current workspace instead of replacing it. 
+
+    ```sh
+    code -a /workspaces/lab-api/
+    ```
+
+    >**NOTE**  
+    > This will cause your workspace browser window to refresh. This is expected and okay, just continue. 
+
+    Your workspace in VSCode should now contain two working directories. ```msft-intro-to-gitops``` and ```lab-api```, the latter of which is currently empty.
+
+    ![Open-Preview](./imgs/lab01-04.jpg)
+
+
     After cloning the repo down, ```cd lab-api``` navigates into the newly created lab-api directory, which contains the cloned repository.
 
     ```sh
@@ -92,18 +106,6 @@ In this step, you will set up your GitHub authentication and create a new reposi
     @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $  
     ```
 
-    This command opens the current directory ($PWD, which stands for "Present Working Directory") in Visual Studio Code and adds it to the existing workspace. The -a flag ensures that the directory is added to the current workspace instead of replacing it. 
-
-    ```sh
-    code -a $PWD
-    ```
-
-    >**NOTE**  
-    > This will cause your workspace browser window to refresh. This is expected and okay, just continue. 
-
-    Your workspace in VSCode should now contain two working directories. ```msft-intro-to-gitops``` and ```lab-api```, the latter of which is currently empty.
-
-    ![Open-Preview](./imgs/lab01-04.jpg)
 
 ---
 # End of Lab 
