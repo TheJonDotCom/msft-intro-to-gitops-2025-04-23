@@ -96,16 +96,8 @@ provider "azurerm" {
 > **NOTE**  
 > In this step, the ```provider.tf``` file specifies the required providers (azapi, azurerm, and random) along with their versions, ensuring compatibility and functionality for managing Azure resources and generating random values. Additionally, the backend "azurerm" block configures Terraform to store its state file in an Azure Storage Account, enabling collaboration and ensuring state consistency across multiple users.
 
->**COPILOT**
->Notice in the linter is alerting us that terraform{} block isn't expected in the code there. Lets ask CoPilot to help us fix this! simply open up co-pilot and type 'how do I fix this?' and review proposed changes? 
----
-
-### data.tf ###
-
-This step focuses on updating the ```data.tf``` file to define two essential data sources in Terraform. The first data source, **azurerm_client_config**, retrieves the current user's Azure credentials, ensuring that Terraform can authenticate and interact with Azure resources. The second data source, **azurerm_resource_group**, references an existing Azure resource group that you created using the AzCLI, allowing Terraform to manage resources within it. 
-
->**NOTE**  
-> Data Import is something that you will commonly have to do when working with various existing infrastructure that is managed else where. Typlically you would create the ResourceGroup(s) as part of the Platform you are deploying vs referencing an existing one. It should offer something like this in return:
+>**COPILOT**  
+>Notice in the linter is alerting us that terraform{} block isn't expected in the code there. Lets ask CoPilot to help us fix this! simply open up co-pilot and type 'how do I fix this?' and review proposed changes?
 
 ```hcl
 terraform {
@@ -141,6 +133,15 @@ provider "azurerm" {
     subscription_id = "f5cc0b2b-b4ba-437f-b770-863a80cf9da0"
 }
 ```
+
+---
+
+### data.tf ###
+
+This step focuses on updating the ```data.tf``` file to define two essential data sources in Terraform. The first data source, **azurerm_client_config**, retrieves the current user's Azure credentials, ensuring that Terraform can authenticate and interact with Azure resources. The second data source, **azurerm_resource_group**, references an existing Azure resource group that you created using the AzCLI, allowing Terraform to manage resources within it. 
+
+>**NOTE**  
+> Data Import is something that you will commonly have to do when working with various existing infrastructure that is managed else where. Typlically you would create the ResourceGroup(s) as part of the Platform you are deploying vs referencing an existing one. It should offer something like this in return:
 
 Copy the following into your ```data.tf``` file. 
 ```hcl
