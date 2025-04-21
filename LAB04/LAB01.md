@@ -135,7 +135,7 @@ To save typing and time you can add the path to your ```inventory.yml``` and ```
 [defaults]
 host_key_checking = False
 inventory = /workspaces/lab-api/infra/ansible/inventory.yml
-private_key_file = ~/.ssh/docker
+private_key_file = ~/.ssh/ansible
 ```
 
 >**NOTE**  
