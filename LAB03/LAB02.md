@@ -55,7 +55,7 @@ Additionally, the backend **"azurerm"** block configures Terraform to store its 
 > The Terraform State file needs to be secured as it contains sensative data used in the creation of the environment. Treat this like you would your own sensative data and limit who has access to read the file from the remote state. 
 
 Copy the following into your ```provider.tf```.
-```sh
+```hcl
 terraform {
     required_version = "~> 1.11.0"
 
@@ -143,7 +143,7 @@ provider "azurerm" {
 ```
 
 Copy the following into your ```data.tf``` file. 
-```sh
+```hcl
 # Import Current User Credentials
 data "azurerm_client_config" "current" {
     provider = azurerm
@@ -161,7 +161,7 @@ data "azurerm_resource_group" "existing" {
 The locals.tf file in Terraform is used to define local values, which are named expressions that simplify and reuse complex or repetitive values in your configuration. In this step, the locals.tf file defines a resourceTags local value that merges predefined tags (var.tags) with a dynamically generated DeploymentUTC tag. 
     
 Copy the following into your ```locals.tf```.
-```sh
+```hcl
 locals {
     ## Add Current Date/Time tag
     resourceTags = merge(
@@ -185,7 +185,7 @@ This step introduces the ```variables.tf``` file, which is used to define input 
 
 
 Copy the following into your ```variables.tf```:
-```sh
+```hcl
 variable "random_string" {
     description = "A random string to be appended to the resource group name for uniqueness."
     type        = string
@@ -221,7 +221,7 @@ variable "appServersConfig" {
 The lab.tfvars file is used to define input variables for the Terraform configuration. It provides specific values for variables such as naming conventions, tags, and application server configurations. 
 
 Copy the following into your ```lab.tfvars```
-```sh
+```hcl
 # Lab Configurations
 initials      = "<your-initials>"
 random_string = "<your-random-string>"
@@ -255,7 +255,7 @@ Additionally, it includes outputs for the private IP addresses of the virtual ma
 
 
 Copy the following into your ```outputs.tf```:
-```sh
+```hcl
 output "ResourceGroupName" {
     value = data.azurerm_resource_group.rg.name
 }
@@ -295,7 +295,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 - The below code blocks demonstrates the use of Azure Verified Modules (AVMs) to import core modules into a Terraform configuration. These modules are pre-built, reusable components designed to simplify and standardize infrastructure deployment on Azure. Here's a breakdown of what each module does and its purpose:
 
     #### Module "naming" ####
-    ```sh 
+    ```hcl 
     module "naming" {
         source  = "Azure/naming/azurerm"
         version = "~> 0.4"
@@ -310,7 +310,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 
 
     #### Module "Regions ####
-    ```sh
+    ```hcl
     module "regions" {
         source                    = "Azure/avm-utl-regions/azurerm"
         version                   = "0.3.0"
@@ -329,7 +329,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     > https://registry.terraform.io/modules/Azure/avm-utl-regions/azurerm/latest
 
     #### Module 'vm_sku' ####
-    ```sh
+    ```hcl
     module "vm_sku" {
     source = "Azure/avm-utl-sku-finder/azapi"
 
@@ -353,7 +353,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 - The Azure/avm-res-network-virtualnetwork/azurerm module is an Azure Verified Module (AVM) used to create and manage a virtual network (VNet) in Azure. This module simplifies the process of defining a VNet and its associated subnets while adhering to Azure best practices.
 
     #### Module "virtual_network" ####
-    ```sh
+    ```hcl
     # Create Virtual Network
     module "virtual_network" {
     source = "Azure/avm-res-network-virtualnetwork/azurerm"
@@ -394,7 +394,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     The ```azurerm_subnet_network_security_group_association``` resource links the NSG (AppSubnetNSG) to a specific subnet (subnet2) in the virtual network.
 
     #### Resource "azurerm_network_security_group" ####
-    ```sh
+    ```hcl
     # Create a Network Security Group
     resource "azurerm_network_security_group" "app_subnet_nsg" {
         name                = "AppSubnetNSG"
@@ -445,7 +445,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 - The azure_bastion module creates an Azure Bastion Host, a secure and scalable service that provides seamless RDP and SSH connectivity to virtual machines (VMs) in a virtual network without exposing them to the public internet. This module simplifies the deployment of Azure Bastion while adhering to best practices for security and performance.
 
     #### Module "azure_bastion" ####
-    ```sh
+    ```hcl
     # Create Azure Bastion Host
     module "azure_bastion" {
     source = "Azure/avm-res-network-bastionhost/azurerm"
@@ -497,7 +497,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 - This configuration sets up an Azure Load Balancer to distribute incoming traffic across multiple backend virtual machines (VMs) and manage outbound traffic. The load balancer ensures high availability, scalability, and fault tolerance for applications by routing traffic efficiently and monitoring the health of backend instances.
 
     #### Azure Load-Balancer ####
-    ```sh
+    ```hcl
     # Create Azure Public IP for LoadBalancer
     resource "azurerm_public_ip" "webapp_lb_pip" {
         name                = "lbpip${var.initials}${var.random_string}"
@@ -519,7 +519,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     >**INFO**  
     > https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip
 
-    ```sh
+    ```hcl
     # Create Azure Load Balancer
     resource "azurerm_lb" "webapp_lb" {
         name                = "lb-${var.initials}${var.random_string}"
@@ -545,7 +545,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     >**INFO**  
     > https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lb
 
-    ```sh
+    ```hcl
     # Create LoadBalancer Backend Address Pool
     resource "azurerm_lb_backend_address_pool" "webapp_backend_pool" {
         loadbalancer_id = azurerm_lb.webapp_lb.id
@@ -556,7 +556,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     > ```loadbalancer_id```: Associates the backend pool with the load balancer.  
     > ```name```: Defines the name of the backend address pool, which holds the backend VMs.
 
-    ```sh
+    ```hcl
     # Create LoadBalancer Health Probe
     resource "azurerm_lb_probe" "webapp_http_probe" {
         loadbalancer_id = azurerm_lb.webapp_lb.id
@@ -569,7 +569,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     > ```name```: Defines the name of the health probe.  
     > ```port```: Specifies the port (80) to check the health of backend instances.  
 
-    ```sh
+    ```hcl
     # Create Load Balancer Rule
     # This rule will forward traffic from the frontend IP configuration to the backend address pool
     # on port 80 using TCP protocol. It also disables outbound SNAT for the backend pool.
@@ -597,7 +597,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     > ```probe_id```: Links the rule to the health probe.  
     > ```backend_address_pool_ids```: Specifies the backend address pool for routing traffic. 
 
-    ```sh
+    ```hcl
     # Create LoadBalancer Outbound SNAT Rule
     resource "azurerm_lb_outbound_rule" "example" {
         name                    = "web-outbound"
@@ -621,7 +621,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 -   The webappServers module provisions multiple virtual machines (VMs) in Azure to serve as application servers for a web application. These VMs are configured with specific settings, such as operating system, size, and network interfaces, and are dynamically associated with the backend pool of a load balancer for traffic distribution. 
 
     #### Module "webappServers" ####
-    ```sh
+    ```hcl
     # Create WebApp Servers
     module "webappServers" {
     source = "Azure/avm-res-compute-virtualmachine/azurerm"
@@ -699,7 +699,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
     >**INFO**  
     > https://registry.terraform.io/modules/Azure/avm-res-compute-virtualmachine/azurerm/latest
 
-    ```sh
+    ```hcl
     # Associate Network Interface to the Backend Pool of the Load Balancer
     resource "azurerm_network_interface_backend_address_pool_association" "example" {
         count                   = var.appServersConfig.vmcount
@@ -719,7 +719,7 @@ This step in the lab focuses on building the ```main.tf``` file, which serves as
 
 When all done your ```main.tf``` should look like this example below:
 
-```sh
+```hcl
 ## Import Core Modules   
 module "naming" {
   source  = "Azure/naming/azurerm"
