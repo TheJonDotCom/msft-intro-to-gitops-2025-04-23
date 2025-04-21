@@ -61,6 +61,7 @@ This step focuses on testing the custom Docker image locally by running it as a 
         docker rm demo-webapi 
         ```
         ```sh
+        # TERMINAL OUTPUT:  
         @BenTheBuilder-MSFTLabs ➜ /workspaces/lab-api (main) $ docker rm demo-webapi 
         demo-webapi
         ```
