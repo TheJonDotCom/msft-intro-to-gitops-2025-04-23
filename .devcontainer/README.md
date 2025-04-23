@@ -1,6 +1,7 @@
 # Azure DevOps (WMW-MCAPS) Development Container
 
 
+
 ## What are Development Containers?
 
 Development containers are a feature provided by Visual Studio Code, allowing you to define a container as a full-featured development environment. Using a `Dockerfile` and configuration files, you can set up your entire development environment, including all necessary tools, libraries, and extensions, within a Docker container. This ensures a consistent setup across different development machines and reduces the "it works on my machine" problem.

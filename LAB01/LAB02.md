@@ -1,5 +1,11 @@
 # Lab Guide #
 
+
+
+
+
+
+
 ## Create New Working Branch ##
 
 In this step we are going to create a new branch in our local repository called 'create-readme'. It is important to not commit directly to main (in fact most organizations prevent this via policy). So we need to create a branch for any features/changes we want to make. We'll use this branch for the next few steps. 

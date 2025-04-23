@@ -1,5 +1,5 @@
 {
-  "name": "Azure DevOps (WMW-MCAPS)",
+  "name": "BenTheBuilder DevOps Tools",
   "build":{
     "dockerfile": "Dockerfile"
   },
