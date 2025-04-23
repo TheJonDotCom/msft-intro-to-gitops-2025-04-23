@@ -97,7 +97,7 @@ This step introduces you to running your first Docker container, helping you und
     08da131eccfe   hello-world:latest   "/hello"   2 minutes ago   Exited (0) 2 minutes ago             priceless_burnell
     ```
     
-    You can see from the OUTPUT that the status of the conatiner was "existed" since it doesn't stay running. Also the Name of each container is randomly generated unless specified during ```docker run``` using ```--name``` property. Take a minute to look at the values returned as this output gives alot of important information. 
+    You can see from the OUTPUT that the status of the conatiner was "exited" since it doesn't stay running. Also the Name of each container is randomly generated unless specified during ```docker run``` using ```--name``` property. Take a minute to look at the values returned as this output gives alot of important information. 
 ---
 5.  Suppose we want to our container to run in the background and stay running. Let's run Ubuntu Docker Image.<br>
     You'll see we changed our command and added ```-d``` parameter. This tells Docker to run the container in *detached* mode or in the background. 
