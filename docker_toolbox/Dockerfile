@@ -1,8 +1,10 @@
 FROM mcr.microsoft.com/devcontainers/base:bullseye
 
-# Set the Arguments for Tools Versions
+# Set the Arguments for container
 ARG PWSH_VERSION="v7.4.3"
 ARG PWSH_FILENAME="powershell_7.4.3-1.deb_amd64.deb"
+ARG DEBIAN_FRONTEND="noninteractive"
+ENV HOME="/config"
 
 # Set the Arguments for the User
 ARG USERNAME=vscode
@@ -109,8 +111,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | g
     && apt-get install -y gh \
     && gh --version
 
+
 # User Scope
 USER ${USERNAME}
-
-# Set default workspace
-WORKDIR /home/${USERNAME}
