@@ -1,3 +1,6 @@
+# 2025-04-23 Microsoft GitOps Workshop
+Presenter: Benjamin Mitchell
+
 # Introduction to GitOps
 
 Welcome to the **Introduction to GitOps** repository! This repository provides a hands-on learning experience with GitOps workflows, covering foundational tools like Git, Docker, Terraform, and Ansible. Each lab builds on the previous one, enabling you to gain practical knowledge of modern development and infrastructure management practices. 
